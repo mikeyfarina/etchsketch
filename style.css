@@ -1,0 +1,42 @@
+body{
+    background-color:lightcoral;
+}
+#maintitle{
+    text-align: center;
+    font-size:75px;
+    margin-bottom:20px;
+    font-family:-apple-system, sans-serif;
+    color:whitesmoke;
+}
+button{
+    padding:5px;
+    font-size:30px;
+    margin-bottom:8px;
+    margin-top:0;
+    margin-left:10%;
+    border-radius:10px;
+    background-color:darkslategrey;
+    color:white;
+}
+
+#container{
+    margin:auto;
+    width:960px;
+    height:960px;
+    display:grid;
+    grid-template-columns: repeat(16,1fr)
+}
+.unit{
+    background-color:white;
+    height:100%;
+    width:100%;
+    margin:1px;
+}
+
+#colored{
+    background-color:white;
+}
+
+.colored{
+    background-color:darkred;
+}

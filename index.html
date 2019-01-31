@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <title>Etch-a-sketch</title>
+    <link rel ="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="maintitle">Etch-a-Sketch</div>
+    <div id="buttons">
+        <button id="clear">Clear</button>
+        <button id="etch">Etch</button>
+        <button id="colors">Random colors</button>
+        <button id="eraser">Eraser</button>
+    </div>
+    <div id="container">
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        const contain = document.querySelector('#container');
+        let div = document.querySelector('div');
+        let gridSize = 16;//prompt("How big is the grid");
+        
+        $(document).ready(function(){ //once all of the html is loaded
+            buildGrid(gridSize);
+        });
+        
+        let clearButton = document.querySelector('#clear');
+        let etchButton = document.querySelector('#etch');
+        let colorsButton = document.querySelector('#colors');
+        let eraserButton = document.querySelector('#eraser');
+
+        clearButton.addEventListener('click', ()=>{
+            clearGrid();
+        })
+        etchButton.addEventListener('click', ()=>{
+            etch();
+        })
+        colorsButton.addEventListener('click', ()=>{
+            randomColor();
+        })
+        eraserButton.addEventListener('click', ()=>{
+            eraser();
+        })
+
+        function buildGrid(){    
+    
+            for (let i =0; i<gridSize; i++){
+                for(let j=0; j <gridSize; j++){
+                    let unit = $("<div class = 'unit'></div>");
+                    unit.appendTo('#container');
+                }
+            } 
+        }
+        function clearGrid(){
+            $('div').remove('.unit');
+            buildGrid();
+        }
+        
+
+        let etch = function(){
+            $('.unit').on('mouseover', function(){
+                $(this).css("background-color", "#000");
+            });
+        };
+        let eraser = function(){
+            $('.unit').on('mouseover', function(){
+                $(this).css("background-color", "white");
+            });
+        };
+
+        var colors = ['blue','green','red','purple','yellow'];
+        function randomColor(){
+            $('.unit').mouseenter(function() {
+                let rand = colors[Math.floor(Math.random() * colors.length)];
+                $(this).css('background-color', rand);
+            });
+        }
+
+        function getRandomColor(){
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                randomColor = '"' + "#" + randomColor + '"';
+                return randomColor;
+        }
+
+    </script>
+</body>
